@@ -36,9 +36,7 @@
   <body>
     <div>
       <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
-      <h2 onclick="changeColorWithRandom()">
-        Questo è il sottotitolo della pagina
-      </h2>
+      <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
     <div>
@@ -195,10 +193,17 @@
          Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
         */
 
-      const revealFooterLink = function () {
-        const popup = document.querySelector("footer a");
-        alert(popup.getAttribute("href"));
+      const revealFooterLink = function (content) {
+        const footer = document.querySelector("footer");
+        footer.style.cursor = "pointer";
+        footer.onclick = function () {
+          const link = document.querySelector("footer a");
+          const URL = link.getAttribute("href");
+
+          alert(URL);
+        };
       };
+      revealFooterLink();
 
       /* ESERCIZIO 11
          Crea una funzione che crei una tabella nell'elemento con id "tableArea".
@@ -254,22 +259,22 @@
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      // const addRow = function (immagine, nome, quantità, prezzo) {
-      //   const table = document.querySelector("#tableArea teable");
-      //   table.innerHTML += `
-      //     <tr>
-      //       <td><img src=${immagine} /></td>
-      //       <td>${nome}</td>
-      //       <td>${quantità}</td>
-      //       <td>${prezzo}</td>
-      //     </tr>
-      //   `;
-      // };
-      // addRow("https://placebear.com/50/50", "Orso 6", 1, "150");
+      const addRow = function (immagine, nome, quantità, prezzo) {
+        const table = document.querySelector("#tableArea teable");
+        table.innerHTML += `
+          <tr>
+            <td><img src=${immagine} /></td>
+            <td>${nome}</td>
+            <td>${quantità}</td>
+            <td>${prezzo}</td>
+          </tr>
+        `;
+      };
+      addRow("https://placebear.com/50/50", "Orso 6", 1, "150");
 
-      /* ESERCIZIO 14
+      /*  ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
-      */
+   */
 
       const hideAllImages = function () {
         const hidden = document.querySelectorAll("table img");
@@ -285,14 +290,17 @@
       */
 
       const changeColorWithRandom = function () {
-        const red = Math.floor(Math.random() * 256);
-        const green = Math.floor(Math.random() * 256);
-        const blue = Math.floor(Math.random() * 256);
+        let elementToChange = document.getElementById("changeMyColor");
+        elementToChange.onclick = function () {
+          const red = Math.round(Math.random() * 255);
+          const green = Math.round(Math.random() * 255);
+          const blue = Math.round(Math.random() * 255);
 
-        const randomColor = `rgb(${red}, ${green}, ${blue})`;
-
-        const h2 = document.querySelector("h2");
-        h2.style.color = randomColor;
+          const randomColor = `rgb(${red},${green},${blue})`;
+          elementToChange.style.userSelect = "none";
+          elementToChange.style.cursor = "pointer";
+          elementToChange.style.color = randomColor;
+        };
       };
 
       changeColorWithRandom();
