@@ -36,7 +36,9 @@
   <body>
     <div>
       <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
-      <h2>Questo è il sottotitolo della pagina</h2>
+      <h2 onclick="changeColorWithRandom()">
+        Questo è il sottotitolo della pagina
+      </h2>
     </div>
 
     <div>
@@ -75,7 +77,6 @@
         DOM Manipulation is super
         <a
           onclick="revealFooterLink"
-          class="alert"
           href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
           >AWESOME!</a
         >
@@ -183,7 +184,9 @@
 
       const makeItClickable = function () {
         const removeLetter = document.getElementsByClassName("myHeading");
-        for (i = 0; i < removeLetter.length; i++) {}
+        for (i = 0; i < removeLetter.length; i++) {
+          removeLetter[i].innerHTML = removeLetter[i].innerHTML.slice(0, -1);
+        }
       };
 
       makeItClickable();
@@ -193,10 +196,8 @@
         */
 
       const revealFooterLink = function () {
-        const popup = document.getElementsByClassName("alert");
-        alert(
-          "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
-        );
+        const popup = document.querySelector("footer a");
+        alert(popup.getAttribute("href"));
       };
 
       /* ESERCIZIO 11
@@ -205,29 +206,47 @@
       */
 
       const generateTable = function () {
-        const tabella = document.getElementById("tableArea");
-        const newTh1 = document.createElement("th");
-        newTh1.innerText = "Immagine";
-        const newTh2 = document.createElement("th");
-        newTh2.innerText = "Nome";
-        const newTh3 = document.createElement("th");
-        newTh3.innerText = "Prodotto";
-        const newTh4 = document.createElement("th");
-        newTh4.innerText = "Quantità";
-        const newTh5 = document.createElement("th");
-        newTh5.innerText = "Prezzo";
-
-        const newTr = document.createElement("tr");
-        newTr.appendChild(newTh1);
-        tabella.appendChild(newTr);
-        newTr.appendChild(newTh2);
-        tabella.appendChild(newTr);
-        newTr.appendChild(newTh3);
-        tabella.appendChild(newTr);
-        newTr.appendChild(newTh4);
-        tabella.appendChild(newTr);
-        newTr.appendChild(newTh5);
-        tabella.appendChild(newTr);
+        const container = document.getElementById("tableArea");
+        container.innerHTML = `
+          <table>
+            <tr>
+              <th>immagine</th>
+              <th>nome prodotto</th>
+              <th>quantità</th>
+              <th>prezzo</th>
+            </tr>
+            <tr>
+              <td><img src="https://placebear.com/300/300" /></td>
+              <td>Orso 1</td>
+              <td>1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td><img src="https://placebear.com/300/300" /></td>
+              <td>Orso 2</td>
+              <td>1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td><img src="https://placebear.com/300/300" /></td>
+              <td>Orso 3</td>
+              <td>1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td><img src="https://placebear.com/300/300" /></td>
+              <td>Orso 4</td>
+              <td>1</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td><img src="https://placebear.com/300/300" /></td>
+              <td>Orso 5</td>
+              <td>1</td>
+              <td>100</td>
+            </tr>
+          </table>
+        `;
       };
       generateTable();
 
@@ -235,19 +254,48 @@
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
       */
 
-      const addRow = function () {};
+      // const addRow = function (immagine, nome, quantità, prezzo) {
+      //   const table = document.querySelector("#tableArea teable");
+      //   table.innerHTML += `
+      //     <tr>
+      //       <td><img src=${immagine} /></td>
+      //       <td>${nome}</td>
+      //       <td>${quantità}</td>
+      //       <td>${prezzo}</td>
+      //     </tr>
+      //   `;
+      // };
+      // addRow("https://placebear.com/50/50", "Orso 6", 1, "150");
 
       /* ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
       */
 
-      const hideAllImages = function () {};
+      const hideAllImages = function () {
+        const hidden = document.querySelectorAll("table img");
+        hidden.forEach((imgtag) => {
+          imgtag.style.opacity = 0;
+        });
+      };
+
+      hideAllImages();
 
       /* EXTRA ESERCIZIO 15
         Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
       */
 
-      const changeColorWithRandom = function () {};
+      const changeColorWithRandom = function () {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+
+        const randomColor = `rgb(${red}, ${green}, ${blue})`;
+
+        const h2 = document.querySelector("h2");
+        h2.style.color = randomColor;
+      };
+
+      changeColorWithRandom();
     </script>
   </body>
 </html>
