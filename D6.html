@@ -86,8 +86,8 @@
       */
 
       const changeTitle = function () {
-        const titolo = document.getElementsByTagName("h1");
-        titolo[0].innerText = "CIAO, TITOLO CAMBIATO!";
+        const titolo = document.getElementsByTagName('h1');
+        titolo[0].innerText = 'CIAO, TITOLO CAMBIATO!';
       };
 
       changeTitle();
@@ -97,8 +97,8 @@
       */
 
       const addClassToTitle = function () {
-        const h1 = document.querySelector("body div h1");
-        h1.classList.add("myHeading");
+        const h1 = document.querySelector('body div h1');
+        h1.classList.add('myHeading');
       };
 
       addClassToTitle();
@@ -108,9 +108,9 @@
         */
 
       const changePcontent = function () {
-        const p = document.querySelectorAll("div p");
+        const p = document.querySelectorAll('div p');
         for (i = 0; i < p.length; i++) {
-          p[i].innerText = " Testo p Cambiato";
+          p[i].innerText = ' Testo p Cambiato';
         }
       };
 
@@ -121,8 +121,8 @@
         */
 
       const changeUrls = function () {
-        const googleLink = document.querySelector("div a");
-        googleLink.setAttribute("href", "https://www.google.com");
+        const googleLink = document.querySelector('div a');
+        googleLink.setAttribute('href', 'https://www.google.com');
       };
 
       changeUrls();
@@ -132,8 +132,8 @@
       */
 
       const addToTheSecond = function () {
-        const newElementLi = document.getElementById("secondList");
-        newElementLi.innerHTML += "<li>4th</li>";
+        const newElementLi = document.getElementById('secondList');
+        newElementLi.innerHTML += '<li>4th</li>';
       };
       addToTheSecond();
 
@@ -142,10 +142,10 @@
       */
 
       const addParagraph = function () {
-        const newP = document.getElementsByTagName("div");
+        const newP = document.getElementsByTagName('div');
         for (i = 0; i < newP.length; i++) {
           if (i === 0) {
-            newP[i].innerHTML += "<p>Nuovo Paragrafo</p>";
+            newP[i].innerHTML += '<p>Nuovo Paragrafo</p>';
           }
         }
       };
@@ -157,7 +157,7 @@
       */
 
       const hideFirstUl = function () {
-        const removeUl = document.getElementById("firstList");
+        const removeUl = document.getElementById('firstList');
         removeUl.remove();
       };
 
@@ -168,9 +168,9 @@
         */
 
       const paintItGreen = function () {
-        const backgoundLi = document.getElementsByTagName("ul");
+        const backgoundLi = document.getElementsByTagName('ul');
         for (i = 0; i < backgoundLi.length; i++) {
-          backgoundLi[i].style.backgroundColor = "green";
+          backgoundLi[i].style.backgroundColor = 'green';
         }
       };
 
@@ -181,7 +181,7 @@
         */
 
       const makeItClickable = function () {
-        const removeLetter = document.getElementsByClassName("myHeading");
+        const removeLetter = document.getElementsByClassName('myHeading');
         for (i = 0; i < removeLetter.length; i++) {
           removeLetter[i].innerHTML = removeLetter[i].innerHTML.slice(0, -1);
         }
@@ -194,11 +194,11 @@
         */
 
       const revealFooterLink = function (content) {
-        const footer = document.querySelector("footer");
-        footer.style.cursor = "pointer";
+        const footer = document.querySelector('footer');
+        footer.style.cursor = 'pointer';
         footer.onclick = function () {
-          const link = document.querySelector("footer a");
-          const URL = link.getAttribute("href");
+          const link = document.querySelector('footer a');
+          const URL = link.getAttribute('href');
 
           alert(URL);
         };
@@ -211,7 +211,7 @@
       */
 
       const generateTable = function () {
-        const container = document.getElementById("tableArea");
+        const container = document.getElementById('tableArea');
         container.innerHTML = `
           <table>
             <tr>
@@ -260,7 +260,7 @@
       */
 
       const addRow = function (immagine, nome, quantità, prezzo) {
-        const table = document.querySelector("#tableArea teable");
+        const table = document.querySelector('#tableArea teable');
         table.innerHTML += `
           <tr>
             <td><img src=${immagine} /></td>
@@ -270,14 +270,14 @@
           </tr>
         `;
       };
-      addRow("https://placebear.com/50/50", "Orso 6", 1, "150");
+      addRow('https://placebear.com/50/50', 'Orso 6', 1, '150');
 
       /*  ESERCIZIO 14
         Crea una funzione che nasconda le immagini della tabella quando eseguita
    */
 
       const hideAllImages = function () {
-        const hidden = document.querySelectorAll("table img");
+        const hidden = document.querySelectorAll('table img');
         hidden.forEach((imgtag) => {
           imgtag.style.opacity = 0;
         });
@@ -290,15 +290,15 @@
       */
 
       const changeColorWithRandom = function () {
-        let elementToChange = document.getElementById("changeMyColor");
+        let elementToChange = document.getElementById('changeMyColor');
         elementToChange.onclick = function () {
           const red = Math.round(Math.random() * 255);
           const green = Math.round(Math.random() * 255);
           const blue = Math.round(Math.random() * 255);
 
           const randomColor = `rgb(${red},${green},${blue})`;
-          elementToChange.style.userSelect = "none";
-          elementToChange.style.cursor = "pointer";
+          elementToChange.style.userSelect = 'none';
+          elementToChange.style.cursor = 'pointer';
           elementToChange.style.color = randomColor;
         };
       };
